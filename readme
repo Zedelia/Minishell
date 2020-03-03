@@ -1,0 +1,91 @@
+TODO
+
+cd - modifier pwd a chaque fois
+
+cd [NULL] : fait selon variable d'environnement HOME
+
+cd -> https://man.cx/cd
+
+POUR EXIT :
+mettre la retval d'exit dans exit status
+mettre en global exit = 1
+mettre en global interrupt = 1
+
+# **************************************************************************** #
+
+
+echo -n : remove the '\n' after the string argument.
+echo ~  : print $HOME
+
+
+$ echo "hello there" 2> | sed "s/hello/hi/"
+					ou > fichier
+hi there deux fois, ou hello puis hi ?
+
+
+# **************************************************************************** #
+
+Pour le moment ce que je tire des man pour les fonctions du sujet :
+Un genre d'int = pid_t
+fork : permet de lancer un processus enfant en parallele du processus actuel. Renvoie un genre d'int qui sert d'identifiant a l'enfant.
+wait/waitpid : avec fork, les processus avancent a un rythme different et difficilement controlable, Wait permet de forcer une attente. C'est important, car ca permet d'annuler la conso de ressource d'un processus enfant ! Renvoie un genre d'int, -1 est une erreur
+wait3/wait4 : renvoient des infos supplementaires
+kill : interrompt un processus
+getcwd : get current workind directory, retourne une chaine de caracteres
+chdir : change directory, prend une chaine et renvoie un int
+stat : stock des infos sur le fichier passé en arg (char*) dans le buffer passé en arg (struct stat)
+lstat : pareil pour ln -s
+fstat : pareil pour fd
+execve : execute le programme passé en arg (char *) avec le tableau d'arg passé en arg (char[][])
+dup : cree une copie d'un fd (???)
+dup2 : close apparemment le fichier avant la copie ?
+pipe : cree une connexion entre deux fd, le fd de lecture et le fd d'ecriture
+opendir/readdir/closedir : duh
+
+
+# **************************************************************************** #
+
+
+
+Base : https://brennan.io/2015/01/16/write-a-shell-in-c/
+
+Commandes utiles :
+
+printenv
+
+$?
+true; echo $?
+false; echo $?
+
+print ^\ ascii value : printf '^\' | od -An -tu
+
+' et " en shell : https://abs.traduc.org/abs-5.0-fr/ch05.html
+
+ctrl + C, ctrl + D : https://superuser.com/questions/169051/whats-the-difference-between-c-and-d-for-unix-mac-os-x-terminal
+ctrl + \ : quit https://unix.stackexchange.com/questions/226327/what-does-ctrl4-and-ctrl-do-in-bash
+
+^C : 17246
+^D : 17502
+^\ : 23646
+
+gerer > donc 2> aussi
+> tout seul est un touch
+
+pipe | https://stackoverflow.com/questions/9834086/what-is-a-simple-explanation-for-how-pipes-work-in-bash
+
+# **************************************************************************** #
+
+verifs avant la fin :
+
+- PWD est correct ? ou on doit le modifier a la volee char *path ?
+
+- si pas d'operations, que renvoie '$?' ?
+command not found: 0
+
+- env -> _=/usr/bin/env ou /.........././a.out ?
+
+
+echo 30 | VARTEST=25 ; echo VARTEST
+VARTEST modifié
+VARTEST=25 | echo 30 ; echo VARTEST
+VARTEST reste a sa valeur precedente

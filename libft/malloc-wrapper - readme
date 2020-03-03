@@ -1,0 +1,5 @@
+To use the malloc wrapper, allowing for easy/lazy garbade collection :
+
+wrmalloc works as a malloc, but also add the malloc-ed thing to a list
+wrfree works as a free, but also remove the malloc-ed thing from the list
+wrdestroy clear the list while free-ing each of its elements
