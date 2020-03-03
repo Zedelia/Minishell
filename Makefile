@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
+#    By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:46:56 by jotrique          #+#    #+#              #
-#    Updated: 2020/03/03 13:02:02 by jotrique         ###   ########lyon.fr    #
+#    Updated: 2020/03/03 14:42:41 by mbos             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 
 # Makes everything silent
-#MAKEFLAGS		+=	--silent
+# MAKEFLAGS		+=	--silent
 
 .PHONY			:	all clean fclean re
 
@@ -43,10 +43,13 @@ LIBFT_PATH		=	libft
 
 #* Sources
 
-SRC				=	src/parsing/*.c \
-					src/processus/*.c \
-					src/command/*.c
+SRC_NAME		=	builtins.c
+
 					# add src/*.c - main.c manually
+
+SRC_PATH		= 	src
+
+SRC				=	$(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 INC_PATH		=	includes
 
@@ -54,13 +57,56 @@ INC_NAME		=	*.h
 
 INC				=	$(addprefix $(INC_PATH)/,$(INC_NAME))
 
-OBJ				=	$(SRC:.c=.o)
 
-all				:	$(NAME) dep
-					clear
+#* Obj
+
+# OBJ				=	$(SRC:.c=.o)
+OBJ_PATH		=	.objects
+OBJ_NAME		:=	${SRC_NAME:.c=.o}
+OBJ 			= $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+
+
+##					##
+##		COLORS		##
+##					##
+
+GREY = \x1b[30m
+RED = \x1b[31m
+GREEN = \x1b[32m
+YELLOW = \x1b[33m
+BLUE = \x1b[34m
+PURPLE = \x1b[35m
+CYAN = \x1b[36m
+WHITE = \x1b[37m
+RESET = \033[0;37m
+ORANGE = \033[38;5;214m
+PINK = \033[38;5;197m
+END = \x1b[0m
+ERASE = \033[2K\r
+
+##					##
+##		FONTS		##
+##					##
+
+END			=	\033[0m
+BOLD		=	\033[1m
+R_BOLD		=	\033[21m
+BLINK		=	\033[5m
+R_BLINK		=	\033[25m
+UNDERLINE	=	\033[4m
+R_UNDERLINE	=	\033[24m
+
+$(OBJ_PATH)/%.o : 	$(SRC_PATH)/%.c $(INC)
+					$(CC) $(CFLAGS) -I $(INC_PATH) -o $@ -c $<
+					printf "$(ERASE)$(BLUE)> Compilation :$(END) $<"
+
+all				:	makedir dep $(NAME)
+
+makedir			:
+					@mkdir -p $(OBJ_PATH)
 
 $(NAME)			:	$(OBJ) $(INC)
-					$(CC) $(CFLAGS) -I $(INC_PATH) $(OBJ) src/main.c -o $(NAME)
+					$(CC) $(CFLAGS) $(LIBFT_PATH)/libft.a -I $(INC) src/main.c
 
 dep				:
 					make -C $(LIBFT_PATH)
@@ -68,8 +114,9 @@ dep				:
 norme			:
 					norminette  src/*.c src/parsing src/process includes
 
-%.o				:	%.c $(INC)
-					$(CC) -c $< -o $@ $(CFLAGS) -I $(INC_PATH)
+
+# %.o				:	%.c $(INC)
+# 					$(CC) -c $< -o $@ $(CFLAGS) -I $(INC_PATH)
 
 #* Much needed tidying up
 
@@ -79,6 +126,7 @@ clean			:
 
 fclean			:	clean
 					$(RM) $(NAME)
+					$(RM) -r $(OBJ_PATH)
 					@ make -C $(LIBFT_PATH) fclean
 
 re				:	fclean all

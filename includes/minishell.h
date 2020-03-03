@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   minishell.h                                      .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: jotrique <jotrique@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2020/02/03 10:27:27 by jotrique     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/17 08:29:09 by jotrique    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   minishell.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/02/03 10:27:27 by jotrique          #+#    #+#             */
+/*   Updated: 2020/03/03 15:11:03 by mbos             ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 
 //TODO Ce .h est pour les choses utilisées a la fois dans le parsing et le process
 //* Proposition : Faire un tableau de fonction pour ce que le parsing file au process
@@ -21,67 +21,68 @@
 #include "../libft/include/get_next_line.h"
 #include "../libft/include/ft_printf.h"
 
-/*
-**	malloc, free
-*/
 # include <stdlib.h>
-
-/*
-**	write, read, close, fork, getcwd, execve, dup, dup2, pipe
-*/
 # include <unistd.h>
-
-/*
-**	open
-*/
 # include <fcntl.h>
-
-/*
-**	read
-*/
 # include <sys/types.h>
 # include <sys/uio.h>
 
-/*
-**	wait, wait3, wait4, waitpid
-*/
+//	wait, wait3, wait4, waitpid
 # include <sys/wait.h>
 
-/*
-**	signal, kill
-*/
+//	signal, kill
 # include <signal.h>
 
-/*
-**	stat, lstat, fstat
-*/
+//	stat, lstat, fstat
 # include <sys/stat.h>
 
-/*
-**	opendir, readdir, closedir
-*/
+//	opendir, readdir, closedir
 # include <dirent.h>
 
-/*
-**	errno
-*/
+//	errno
 # include <sys/errno.h>
 
-/*
-**	strerror
-*/
+//	strerror
 # include <stdio.h>
 
-enum e_command
+typedef enum
 {
-	__echo = 0,
-	__cd,
-	__pwd,
-	__export,
-	__unset,
-	__env,
-	__exit,
-	__size
+	False,
+	True,
+}	t_bool;
+
+typedef struct s_shell 		t_shell;
+typedef struct s_input 		t_input;
+typedef struct s_cmd		t_cmd;
+typedef struct s_op			t_op;
+typedef struct s_args 		t_args;
+
+struct s_shell
+{
+	char	*pwd;
+	t_input	**input;
 };
+
+struct s_input
+{
+	char	*content;
+	t_cmd	**cmd;
+	t_input	*next;
+};
+
+struct s_cmd
+{
+	char 	*content;
+	t_op	**op;
+	t_cmd	*next;
+};
+
+struct s_args
+{
+	char	*content;
+	int		id;
+	t_args	*next;
+};
+
 
 #endif
