@@ -1,3 +1,7 @@
+/* just run this :
+gcc -Wall -Wextra -Werror src/howto/signal+fork.c&& ./a.out
+*/
+
 // printf
 #include <stdio.h>
 
