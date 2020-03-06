@@ -28,26 +28,32 @@ hi there deux fois, ou hello puis hi ?
 Pour le moment ce que je tire des man pour les fonctions du sujet :
 Un genre d'int = pid_t
 fork : permet de lancer un processus enfant en parallele du processus actuel. Renvoie un genre d'int qui sert d'identifiant a l'enfant.
+fork : https://indradhanush.github.io/blog/writing-a-unix-shell-part-1/
 wait/waitpid : avec fork, les processus avancent a un rythme different et difficilement controlable, Wait permet de forcer une attente. C'est important, car ca permet d'annuler la conso de ressource d'un processus enfant ! Renvoie un genre d'int, -1 est une erreur
-wait3/wait4 : renvoient des infos supplementaires
-kill : interrompt un processus
+wait/waitpid : wait((int)&status) == waitpid(-1, &status, 0);
+wait3/wait4 : rendu obsolete par waitpid, mais renvoient des infos supplementaires sur les ressources consommees par les processus
+kill : detruit un processus
+signal : https://unix.stackexchange.com/questions/176235/fork-and-how-signals-are-delivered-to-processes
+signal : ^ says "A signal sent to the process group after the fork() should be delivered to both parent and child."
 getcwd : get current workind directory, retourne une chaine de caracteres
 chdir : change directory, prend une chaine et renvoie un int
 stat : stock des infos sur le fichier passé en arg (char*) dans le buffer passé en arg (struct stat)
 lstat : pareil pour ln -s
 fstat : pareil pour fd
-execve : execute le programme passé en arg (char *) avec le tableau d'arg passé en arg (char[][])
+pipe/dup/dup2 : https://gist.github.com/parse/966049 suggere d'utiliser READ 0, WRITE 1 en define par commodité et lisibilité
+pipe : cree une connexion entre deux fd, le fd de lecture et le fd d'ecriture
 dup : cree une copie d'un fd (???)
 dup2 : close apparemment le fichier avant la copie ?
-pipe : cree une connexion entre deux fd, le fd de lecture et le fd d'ecriture
 opendir/readdir/closedir : duh
-
+execve : execute le programme passé en arg (char *) avec le tableau d'arg passé en arg (char[][])
+execve : doit deja etre au bon endroit pour lancer l'executable https://stackoverflow.com/questions/20823371/what-is-the-difference-between-the-functions-of-the-exec-family-of-system-calls
 
 # **************************************************************************** #
 
 
 
 Base : https://brennan.io/2015/01/16/write-a-shell-in-c/
+
 
 Commandes utiles :
 
@@ -66,6 +72,7 @@ ctrl + \ : quit https://unix.stackexchange.com/questions/226327/what-does-ctrl4-
 
 ^C : 17246
 ^D : 17502
+ctrl + D : It closes the stdin pipe. If read(STDIN) returns 0, it means stdin closed, which means Ctrl+D was hit (assuming there is a keyboard at the other end of the pipe).
 ^\ : 23646
 
 gerer > donc 2> aussi
@@ -89,3 +96,14 @@ echo 30 | VARTEST=25 ; echo VARTEST
 VARTEST modifié
 VARTEST=25 | echo 30 ; echo VARTEST
 VARTEST reste a sa valeur precedente
+
+# **************************************************************************** #
+
+Trucs a tester :
+
+exit | echo 12								exit ne marche pas
+
+echo 12'12 + 3'yrdy
+echo  ' 12 + 3'" yrdy "
+
+echo 12"12 + 3"12'   'q						un seul arg pour tout ca
