@@ -6,7 +6,7 @@
 #    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:46:56 by jotrique          #+#    #+#              #
-#    Updated: 2020/03/09 11:44:25 by jotrique         ###   ########lyon.fr    #
+#    Updated: 2020/03/09 12:06:28 by jotrique         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,7 +46,8 @@ LIBFT_PATH		=	libft
 SRC_NAME		=	command/echo.c \
 					command/pwd.c \
 					signal/signal.c \
-					shell/parent.c
+					shell/parent.c \
+					shell/input.c
 
 					# add src/*.c - main.c manually
 
@@ -109,6 +110,7 @@ $(OBJ_PATH)/%.o : 	$(SRC_PATH)/%.c $(INC)
 					printf "$(ERASE)$(BLUE)> Compilation :$(END) $<\n"
 
 all				:	makedir dep $(NAME)
+					rm -f */*.gch
 
 makedir			:
 					@mkdir -p $(OBJ_PATH) $(OBJ_PATH)/$(MKDIR_LST)

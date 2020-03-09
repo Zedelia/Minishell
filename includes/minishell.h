@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 10:27:27 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 11:36:42 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 12:50:20 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,20 @@ struct s_global
 
 struct s_shell
 {
-	t_input		**input;
+	t_input		*input;
 };
 
 struct s_input
 {
 	char	*content;
-	t_cmd	**cmd;
+	t_cmd	*cmd;
 	t_input	*next;
 };
 
 struct s_cmd
 {
 	char 	*content;
-	t_op	**op;
+	t_op	*op;
 	t_cmd	*next;
 };
 

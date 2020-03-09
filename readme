@@ -107,3 +107,7 @@ echo 12'12 + 3'yrdy
 echo  ' 12 + 3'" yrdy "
 
 echo 12"12 + 3"12'   'q						un seul arg pour tout ca
+
+Pour illustrer le retour a la ligne :
+ls |
+cat -e
