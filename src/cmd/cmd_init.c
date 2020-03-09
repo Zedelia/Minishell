@@ -1,28 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   child.c                                            :+:      :+:    :+:   */
+/*   cmd_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/09 12:15:21 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 15:41:56 by mbos             ###   ########lyon.fr   */
+/*   Created: 2020/03/09 14:54:49 by mbos              #+#    #+#             */
+/*   Updated: 2020/03/09 15:13:27 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-void	child(int *status)
+int		cmd_init(t_input *input)
 {
-	t_input **head_input;
-	char	*user_input;
+	printf("LOL");
+	input->cmd->content = "tutu";
+	return (1);
 
-	head_input = NULL;
-	user_input = 0;
-	ft_pwd(False);
-	ft_printf(" >>> ");
-	get_next_line(0, &user_input);
-	input_init(head_input, user_input);
-	ft_printf("HELOOOOOO\n");
-	(void)status;
+
 }

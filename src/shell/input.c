@@ -6,7 +6,7 @@
 /*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:06:38 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 14:44:36 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 15:58:35 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,34 @@ void	input_clear(t_input **head)
 	head = 0;
 }
 
-int		input_init(t_input **head_input, char *user_input)
+void	input_add(t_input **head_input, t_input *new)
 {
-	t_input *current;
+	t_input *tmp;
 
-	current = 0;
-	if (*head_input == 0)
-	{
-		if (!(*head_input = wrmalloc(sizeof(t_input))))
-			return (return_function(__func__, "FAIL malloc"));
-		**head_input = (t_input){0};
-		(*head_input)->content = ft_strdup(user_input);
-	}
+	if (head_input == 0)
+		head_input = &new;
 	else
 	{
-		current = *head_input;
-		while (current->next)
-			current = current->next;
-		if (!(current->next = wrmalloc(sizeof(t_input))))
-			return (return_function(__func__, "FAIL malloc"));
-		*current->next = (t_input){0};
-		current->next->content = ft_strdup(user_input);
+		tmp = *head_input;
+		while (tmp->next)
+			tmp = tmp->next;
+		tmp->next = new;
 	}
+}
+
+int		input_init(t_input **head_input, char *user_input)
+{
+	t_input *new;
+
+	if (!(new = wrmalloc(sizeof(t_input))))
+		return (return_function(__func__, "FAIL malloc"));
+	new = &(t_input){0};
+	new->content = ft_strdup(user_input);
+	input_add(head_input, new);
 	ft_memdel((void**)&user_input);
-	init_command(*head_input);
-	return (SUCCESS);
+	cmd_init(new);
+	//ft_printf("%s\n", new->cmd->content);
+	// return (cmd_init(new));
+
+	return (1);
 }

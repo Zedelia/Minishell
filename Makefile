@@ -6,7 +6,7 @@
 #    By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:46:56 by jotrique          #+#    #+#              #
-#    Updated: 2020/03/09 14:41:01 by mbos             ###   ########lyon.fr    #
+#    Updated: 2020/03/09 15:28:58 by mbos             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,9 @@ LIBFT_PATH		=	libft
 
 #* Sources
 
-SRC_NAME		=	command/echo.c \
-					command/pwd.c \
+SRC_NAME		=	exec/echo.c \
+					exec/pwd.c \
+					cmd/cmd_init.c \
 					signal/signal.c \
 					shell/child.c \
 					shell/input.c \
@@ -53,7 +54,7 @@ SRC_NAME		=	command/echo.c \
 
 					# add src/*.c - main.c manually
 
-MKDIR_LST		=	{command,signal,shell}
+MKDIR_LST		=	{cmd,exec,signal,shell}
 
 SRC_PATH		= 	src
 
@@ -62,7 +63,8 @@ SRC_PATH		= 	src
 INC_PATH		=	includes
 
 INC_NAME		=	minishell.h \
-					command.h \
+					exec.h \
+					cmd.h \
 					shell.h \
 					styles.h
 
@@ -121,6 +123,10 @@ makedir			:
 $(NAME)			:	$(OBJ) $(INC)
 					$(CC) $(CFLAGS) $(OBJ) $(LIBFT_PATH)/libft.a $(INC_I) src/main.c
 
+asan			: 	$(OBJ) $(INC)
+					$(CC) $(CFLAGS) $(ASAN) $(OBJ) $(LIBFT_PATH)/libft.a $(INC_I) src/main.c
+					./a.out
+
 exec			:
 					make all
 					#@printf "\n"
@@ -128,7 +134,7 @@ exec			:
 
 # make PARAM=input_init ut
 ut $(PARAM)		:
-					$(CC) $(CFLAGS) $(OBJ) $(INC_I) src/tests/ut_$(PARAM).c libft/libft.a
+					$(CC) $(CFLAGS) $(ASAN) $(OBJ) $(INC_I) src/tests/ut_$(PARAM).c libft/libft.a
 					./a.out
 
 dep				:

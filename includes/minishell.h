@@ -6,7 +6,7 @@
 /*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 10:27:27 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 14:52:23 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 15:11:13 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,8 @@ struct s_args
 // main.c
 // t_global *global(void);
 
-# include "command.h"
+# include "cmd.h"
 # include "shell.h"
+# include "exec.h"
 
 #endif
