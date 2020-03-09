@@ -4,6 +4,9 @@
 // signal
 #include <signal.h>
 
+// sleep
+#include <unistd.h>
+
 void sighandler(int signum)
 {
 	printf("Signal %d caught, coming out...", signum);

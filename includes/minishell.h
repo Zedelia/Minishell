@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
+/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 10:27:27 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/03 15:11:03 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 11:36:42 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,16 +51,21 @@ typedef enum
 	True,
 }	t_bool;
 
+typedef struct s_global		t_global;
 typedef struct s_shell 		t_shell;
 typedef struct s_input 		t_input;
 typedef struct s_cmd		t_cmd;
 typedef struct s_op			t_op;
 typedef struct s_args 		t_args;
 
+struct s_global
+{
+	char *cwd;
+};
+
 struct s_shell
 {
-	char	*pwd;
-	t_input	**input;
+	t_input		**input;
 };
 
 struct s_input
@@ -84,5 +89,10 @@ struct s_args
 	t_args	*next;
 };
 
+// main.c
+// t_global *global(void);
+
+# include "command.h"
+# include "shell.h"
 
 #endif

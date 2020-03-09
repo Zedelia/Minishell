@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+         #
+#    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:46:56 by jotrique          #+#    #+#              #
-#    Updated: 2020/03/03 14:42:41 by mbos             ###   ########lyon.fr    #
+#    Updated: 2020/03/09 11:44:25 by jotrique         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
 
 # Makes everything silent
-# MAKEFLAGS		+=	--silent
+MAKEFLAGS		+=	--silent
 
 .PHONY			:	all clean fclean re
 
@@ -43,20 +43,28 @@ LIBFT_PATH		=	libft
 
 #* Sources
 
-SRC_NAME		=	builtins.c
+SRC_NAME		=	command/echo.c \
+					command/pwd.c \
+					signal/signal.c \
+					shell/parent.c
 
 					# add src/*.c - main.c manually
 
+MKDIR_LST		=	{command,signal,shell}
+
 SRC_PATH		= 	src
 
-SRC				=	$(addprefix $(SRC_PATH)/,$(SRC_NAME))
+# SRC				=	$(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 INC_PATH		=	includes
 
-INC_NAME		=	*.h
+INC_NAME		=	minishell.h \
+					command.h \
+					shell.h
 
 INC				=	$(addprefix $(INC_PATH)/,$(INC_NAME))
 
+INC_I			=	$(addprefix -I,$(INC_PATH))
 
 #* Obj
 
@@ -98,15 +106,20 @@ R_UNDERLINE	=	\033[24m
 
 $(OBJ_PATH)/%.o : 	$(SRC_PATH)/%.c $(INC)
 					$(CC) $(CFLAGS) -I $(INC_PATH) -o $@ -c $<
-					printf "$(ERASE)$(BLUE)> Compilation :$(END) $<"
+					printf "$(ERASE)$(BLUE)> Compilation :$(END) $<\n"
 
 all				:	makedir dep $(NAME)
 
 makedir			:
-					@mkdir -p $(OBJ_PATH)
+					@mkdir -p $(OBJ_PATH) $(OBJ_PATH)/$(MKDIR_LST)
 
 $(NAME)			:	$(OBJ) $(INC)
-					$(CC) $(CFLAGS) $(LIBFT_PATH)/libft.a -I $(INC) src/main.c
+					$(CC) $(CFLAGS) $(OBJ) $(LIBFT_PATH)/libft.a $(INC_I) src/main.c
+
+exec			:
+					make all
+					#@printf "\n"
+					./a.out
 
 dep				:
 					make -C $(LIBFT_PATH)
