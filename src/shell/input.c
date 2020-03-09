@@ -6,7 +6,7 @@
 /*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:06:38 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 15:58:35 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 16:28:41 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ void	input_clear(t_input **head)
 		current = (*head)->next;
 		ft_memdel((void**)&(*head)->content);
 		(*head)->content = 0;
-		//TODO add cmd_clear();
-		// cmd = 0;
+		cmd_clear(&(*head)->cmd);
 		ft_memdel((void**)&(*head));
 		*head = current;
 	}
@@ -44,6 +43,36 @@ void	input_add(t_input **head_input, t_input *new)
 	}
 }
 
+int		input_parser(t_input *input)
+{
+	char *str;
+	char sep;
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	str = input->content;
+	while(str[i])
+	{
+		if (is_in(str[i], "\'\""))
+		{
+			sep = str[i];
+			while (str[i] && str[i] != sep)
+				i++;
+			if (!str[i])
+				return (return_function(__func__, "Quote still opened\n"));			// cas d'erreur, fin de ligne avec ' ou " ouvert
+		}
+		if (str[i] == ';' && i > 0 && str[i - 1] != '\\')
+		{
+			cmd_init(input, &str[j], i - j);
+			j = i + 1;
+		}
+		i++;
+	}
+	return (SUCCESS);
+}
+
 int		input_init(t_input **head_input, char *user_input)
 {
 	t_input *new;
@@ -54,7 +83,7 @@ int		input_init(t_input **head_input, char *user_input)
 	new->content = ft_strdup(user_input);
 	input_add(head_input, new);
 	ft_memdel((void**)&user_input);
-	cmd_init(new);
+	input_parser(new);
 	//ft_printf("%s\n", new->cmd->content);
 	// return (cmd_init(new));
 
