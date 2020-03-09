@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 10:22:45 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 17:32:01 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 17:40:15 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sigquit(int signum);
 void	parent(int *status);
 
 //child.c
-void	child(int *status);
+int		child(int *status);
 
 //input_process.c
 int		input_parser(t_input *input);

@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 14:54:49 by mbos              #+#    #+#             */
-/*   Updated: 2020/03/09 16:37:15 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 18:12:00 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	cmd_clear(t_cmd **head)
 	while (*head)
 	{
 		current = (*head)->next;
-		ft_memdel((void**)&(*head)->content);
+		wrfree((*head)->content);
 		(*head)->content = 0;
 		//TODO add op_clear();
 		// op = 0;
-		ft_memdel((void**)&(*head));
+		wrfree((*head));
 		*head = current;
 	}
 	head = 0;

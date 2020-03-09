@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 10:14:19 by abourbou          #+#    #+#             */
-/*   Updated: 2020/03/09 16:59:31 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 18:10:40 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int				wrfree(void *ptr)
 		next = current->next;
 		if (current->content == ptr)
 		{
-			free(ptr);
+			ft_memdel(&ptr);
 			free(current);
 			if (prev)
 				prev->next = next;
