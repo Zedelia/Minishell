@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+         #
+#    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:46:56 by jotrique          #+#    #+#              #
-#    Updated: 2020/03/09 15:28:58 by mbos             ###   ########lyon.fr    #
+#    Updated: 2020/03/09 17:33:42 by jotrique         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,7 @@ SRC_NAME		=	exec/echo.c \
 					signal/signal.c \
 					shell/child.c \
 					shell/input.c \
+					shell/input_process.c \
 					shell/parent.c \
 					shell/return.c
 

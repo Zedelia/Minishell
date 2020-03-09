@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   backtrack_whitespace.c                             :+:      :+:    :+:   */
+/*   backtrack_ws.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../include/libft.h"
 
-int	backtrack_whitespace(char c, char *str)
+int	backtrack_ws(char c, char *str)
 {
 	int len;
 
