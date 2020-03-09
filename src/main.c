@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 09:34:50 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 11:36:37 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 14:39:41 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int main(int ac, char **av, char **env)
 		return (-1);
 	}
 
-	// if (pid == 0)
-	// 	child(&status);
+	if (pid == 0)
+		child(&status);
 	if (pid)
 		parent(&status);
 

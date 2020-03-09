@@ -3,7 +3,7 @@
 ** i.e : if you have HOME and HOMEBREW, it allows only HOME
 */
 
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 /*
 void	print_env_var(char **env, char *varname)

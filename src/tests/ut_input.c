@@ -1,5 +1,5 @@
-// #include "minishell.h"
-#include "../../includes/minishell.h"
+#include "minishell.h"
+
 
 void init_input(t_input **head_input, char *user_input);
 
@@ -10,7 +10,7 @@ int main(int ac, char **av)
 	char *user_input2 = ft_strdup("ls | cat -e");
 	t_input *current;
 
-	init_input(&head_input, user_input);
+	input_init(&head_input, user_input);
 	current = head_input;
 	while (current)
 	{
@@ -18,7 +18,7 @@ int main(int ac, char **av)
 		current = current->next;
 	}
 
-	init_input(&head_input, user_input2);
+	input_init(&head_input, user_input2);
 	current = head_input;
 	while (current)
 	{

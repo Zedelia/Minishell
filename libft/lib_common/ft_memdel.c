@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   return.c                                           :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/09 13:52:50 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 14:31:10 by mbos             ###   ########lyon.fr   */
+/*   Created: 2020/02/17 12:47:14 by mbos              #+#    #+#             */
+/*   Updated: 2020/03/09 14:17:01 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minishell.h"
-#include "styles.h"
+#include "../include/libft.h"
 
-int return_function(const char *func_name, const char *message)
+void	ft_memdel(void **ap)
 {
-	ft_printf(RED"%s"RESET, func_name);
-	if (message)
-		ft_printf(": %s\n", message);
-	perror(0);
-	wrdestroy();
-	return (-1);
+	if (ap != NULL)
+	{
+		free(*ap);
+		*ap = NULL;
+	}
 }

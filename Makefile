@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
+#    By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:46:56 by jotrique          #+#    #+#              #
-#    Updated: 2020/03/09 12:06:28 by jotrique         ###   ########lyon.fr    #
+#    Updated: 2020/03/09 14:41:01 by mbos             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,8 +46,10 @@ LIBFT_PATH		=	libft
 SRC_NAME		=	command/echo.c \
 					command/pwd.c \
 					signal/signal.c \
+					shell/child.c \
+					shell/input.c \
 					shell/parent.c \
-					shell/input.c
+					shell/return.c
 
 					# add src/*.c - main.c manually
 
@@ -61,7 +63,8 @@ INC_PATH		=	includes
 
 INC_NAME		=	minishell.h \
 					command.h \
-					shell.h
+					shell.h \
+					styles.h
 
 INC				=	$(addprefix $(INC_PATH)/,$(INC_NAME))
 
@@ -121,6 +124,11 @@ $(NAME)			:	$(OBJ) $(INC)
 exec			:
 					make all
 					#@printf "\n"
+					./a.out
+
+# make PARAM=input_init ut
+ut $(PARAM)		:
+					$(CC) $(CFLAGS) $(OBJ) $(INC_I) src/tests/ut_$(PARAM).c libft/libft.a
 					./a.out
 
 dep				:

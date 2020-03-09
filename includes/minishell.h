@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minishell.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 10:27:27 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 12:50:20 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 14:52:23 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,10 @@
 
 //	strerror
 # include <stdio.h>
+
+# define SUCCESS 1
+# define UNDEFINED 0
+# define FAILURE -1
 
 typedef enum
 {

@@ -3,15 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:06:38 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 13:52:19 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 14:44:36 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "minishell.h"
-#include "../../includes/minishell.h"
+#include "minishell.h"
 
 void	input_clear(t_input **head)
 {
@@ -20,11 +19,11 @@ void	input_clear(t_input **head)
 	while (*head)
 	{
 		current = (*head)->next;
-		free((*head)->content);
+		ft_memdel((void**)&(*head)->content);
 		(*head)->content = 0;
 		//TODO add cmd_clear();
 		// cmd = 0;
-		free(*head);
+		ft_memdel((void**)&(*head));
 		*head = current;
 	}
 	head = 0;
@@ -52,7 +51,7 @@ int		input_init(t_input **head_input, char *user_input)
 		*current->next = (t_input){0};
 		current->next->content = ft_strdup(user_input);
 	}
-	free(user_input);
-	user_input = 0;
-	return (init_command(*head_input));
+	ft_memdel((void**)&user_input);
+	init_command(*head_input);
+	return (SUCCESS);
 }
