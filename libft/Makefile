@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+         #
+#    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/11 11:01:57 by abourbou          #+#    #+#              #
-#    Updated: 2020/03/09 14:17:30 by mbos             ###   ########lyon.fr    #
+#    Updated: 2020/03/09 16:52:48 by jotrique         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_LIBFT	= 	ft_atoi.c  ft_strdup.c ft_bzero.c \
 				ft_lstadd_back_bonus.c ft_lstadd_front_bonus.c \
 				ft_lstclear_bonus.c ft_lstdelone_bonus.c ft_lstiter_bonus.c \
 				ft_lstlast_bonus.c ft_lst_addnew.c \
-				is_in.c ft_usefull_free.c wrm.c ft_memdel.c
+				is_in.c ft_usefull_free.c wrm.c ft_memdel.c backtrack_whitespace.c
 
 
 GNL_PATH	=	get_next_line

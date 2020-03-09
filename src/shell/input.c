@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
+/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:06:38 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 16:28:41 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/09 16:38:46 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int		input_parser(t_input *input)
 		}
 		i++;
 	}
+	if (backtrack_whitespace('|', str, i) == True)
+		return (UNDEFINED);
 	return (SUCCESS);
 }
 
