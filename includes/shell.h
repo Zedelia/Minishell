@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 10:22:45 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 17:40:15 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/10 11:47:32 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sigquit(int signum);
 void	parent(int *status);
 
 //child.c
-int		child(int *status);
+int		child(t_input **head);
 
 //input_process.c
 int		input_parser(t_input *input);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:06:38 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 18:12:33 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/10 11:48:27 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,8 @@ int		input_init(t_input **head_input, char *user_input)
 	wrfree(user_input);
 	input_add(head_input, new);
 	input_join(&new);
-	//ft_printf("%s\n", new->cmd->content);
+	child(head_input);
+
 	// return (cmd_init(new));
 
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 09:34:50 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 15:15:42 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/10 11:47:24 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ t_global *global(void)
 int main(int ac, char **av, char **env)
 {
 	int	status;
+	t_input **head_input;
 
 	pid_t pid = fork();
 	if (pid == -1)
@@ -31,9 +32,9 @@ int main(int ac, char **av, char **env)
 		ft_printf("Error\nForking failed\n");
 		return (-1);
 	}
-
+	head_input = NULL;
 	if (pid == 0)
-		child(&status);
+		child(head_input);
 	if (pid)
 		parent(&status);
 
