@@ -6,7 +6,7 @@
 #    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:46:56 by jotrique          #+#    #+#              #
-#    Updated: 2020/03/09 17:33:42 by jotrique         ###   ########lyon.fr    #
+#    Updated: 2020/03/10 10:47:53 by jotrique         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -135,7 +135,7 @@ exec			:
 
 # make PARAM=input_init ut
 ut $(PARAM)		:
-					$(CC) $(CFLAGS) $(ASAN) $(OBJ) $(INC_I) src/tests/ut_$(PARAM).c libft/libft.a
+					$(CC) $(CFLAGS) $(OBJ) $(INC_I) src/tests/ut_$(PARAM).c libft/libft.a
 					./a.out
 
 dep				:

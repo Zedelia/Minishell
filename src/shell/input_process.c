@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 17:12:00 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 18:09:20 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/10 11:11:08 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,5 +61,6 @@ int		input_join(t_input **input)
 	cp = (*input)->content;
 	(*input)->content = ft_strjoin(cp, user_input);
 	wrfree(cp);
+	wrfree(user_input);
 	return (input_join(input));
 }
