@@ -1,15 +1,15 @@
 /* ************************************************************************** */
-/*                                                          LE - /            */
-/*                                                              /             */
-/*   ft_csp.c                                         .::    .:/ .      .::   */
-/*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: abourbou <abourbou@student.le-101.fr>      +:+   +:    +:    +:+     */
-/*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2019/11/12 16:43:31 by abourbou     #+#   ##    ##    #+#       */
-/*   Updated: 2020/02/07 09:32:42 by abourbou    ###    #+. /#+    ###.fr     */
-/*                                                         /                  */
-/*                                                        /                   */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_csp.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/11/12 16:43:31 by abourbou          #+#    #+#             */
+/*   Updated: 2020/03/11 14:12:20 by jotrique         ###   ########lyon.fr   */
+/*                                                                            */
 /* ************************************************************************** */
+
 
 #include "../include/ft_printf.h"
 
@@ -69,7 +69,7 @@ int			ft_printf_string(t_format *elem, int alloc)
 		alloc = 1;
 	}
 	min = (elem->prec) ? ft_min(ft_strlen(str), elem->n_prec) :
-		ft_strlen(str);
+		(int)ft_strlen(str);
 	if (elem->flag == '-')
 	{
 		write(1, str, min);
