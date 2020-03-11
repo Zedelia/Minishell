@@ -6,13 +6,13 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:15:21 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/10 11:04:45 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 12:04:59 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
-int	child(int *status)
+int	child()
 {
 	t_input **head_input;
 	char	*user_input;
@@ -23,9 +23,10 @@ int	child(int *status)
 	ft_printf(" >>> ");
 	get_next_line(0, &user_input);
 	input_init(head_input, user_input);
-	ft_printf("HELOOOOOO\n");
-	while(1)
-		sleep(1);
-	(void)status;
-	return(1);
+
+
+	// while (1)
+	// 	sleep(1);
+	ft_printf("Child out\n");
+	exit(SUCCESS);
 }

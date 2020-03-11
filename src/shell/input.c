@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:06:38 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/10 11:10:09 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 10:57:43 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ int		input_init(t_input **head_input, char *user_input)
 
 	wrdestroy();
 	// input_clear(head_input);
-	while (1)
-	{
-		ft_printf("Leaks me !\n");
-		sleep(1);
-	}
+	// while (1)
+	// {
+	// 	ft_printf("Leaks me !\n");
+	// 	sleep(1);
+	// }
 	return (1);
 }

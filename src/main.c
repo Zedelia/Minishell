@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
+/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 09:34:50 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 15:15:42 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 12:03:35 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,31 @@ t_global *global(void)
 }
 */
 
-// pid is the child PID for the parent, or 0 for the child
-int main(int ac, char **av, char **env)
+int		getset_pid(int pid)
 {
-	int	status;
+	static int child_pid;
+
+	if (pid != 0)
+		child_pid = pid;
+	return (child_pid);
+}
+
+/* test of a signal_handler function (second arg of signal function) that use the child pid to kill itself
+void	sig_call(int signum)
+{
+	int pid;
+
+	ft_printf("signum %d\n", signum);
+	pid = getset_pid(0);
+	if (pid != 0)
+		kill(pid, SIGKILL);
+}
+*/
+
+// pid is the child PID for the parent, or 0 for the child
+int		main(int ac, char **av, char **env)
+{
+	int w;
 
 	pid_t pid = fork();
 	if (pid == -1)
@@ -33,10 +54,24 @@ int main(int ac, char **av, char **env)
 	}
 
 	if (pid == 0)
-		child(&status);
+	{
+		signal(SIGINT, sig_int);
+		signal(SIGTERM, sig_term);
+		signal(SIGQUIT, sig_quit);
+		child();
+		exit(1);
+	}
 	if (pid)
-		parent(&status);
+	{
+		// getset_pid(pid);					// share the child pid to other function with a getter/setter, OOP style
+		w = waitpid(-1, 0, 0);				// can change the second param to a int pointer, status
+		// w is the pid of the child that acted out
+		kill(pid, SIGKILL);
+		// parent();						// nothing happens in parent so far, put waitpid and all this things inside parent when tests are over
+		ft_printf("Parent out\n");
+	}
 
+	(void)pid;
 	(void)ac;
 	(void)av;
 	(void)env;

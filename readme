@@ -111,3 +111,5 @@ echo 12"12 + 3"12'   'q						un seul arg pour tout ca
 Pour illustrer le retour a la ligne :
 ls |
 cat -e
+
+echo 12 | ~ctrl+d        => unexpected EOF

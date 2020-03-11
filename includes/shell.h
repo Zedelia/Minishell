@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 10:22:45 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 17:40:15 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 12:04:01 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,15 @@
 # include "minishell.h"
 
 //signal.c
-void	sigint(int signum);
-void	sigterm(int signum);
-void	sigquit(int signum);
+void	sig_int(int signum);
+void	sig_term(int signum);
+void	sig_quit(int signum);
 
 //parent.c
-void	parent(int *status);
+void	parent(void);
 
 //child.c
-int		child(int *status);
+int		child(void);
 
 //input_process.c
 int		input_parser(t_input *input);

@@ -6,7 +6,7 @@
 #    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:46:56 by jotrique          #+#    #+#              #
-#    Updated: 2020/03/10 10:47:53 by jotrique         ###   ########lyon.fr    #
+#    Updated: 2020/03/10 15:36:29 by jotrique         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -121,7 +121,7 @@ all				:	makedir dep $(NAME)
 makedir			:
 					@mkdir -p $(OBJ_PATH) $(OBJ_PATH)/$(MKDIR_LST)
 
-$(NAME)			:	$(OBJ) $(INC)
+$(NAME)			:	$(OBJ)
 					$(CC) $(CFLAGS) $(OBJ) $(LIBFT_PATH)/libft.a $(INC_I) src/main.c
 
 asan			: 	$(OBJ) $(INC)
