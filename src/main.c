@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 09:34:50 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/11 12:20:21 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 16:14:37 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ void	sig_call(int signum)
 // pid is the child PID for the parent, or 0 for the child
 int		main(int ac, char **av, char **env)
 {
+	int status;
 	int w;
 	t_input **head;
 
@@ -68,8 +69,9 @@ int		main(int ac, char **av, char **env)
 	if (pid)
 	{
 		// getset_pid(pid);					// share the child pid to other function with a getter/setter, OOP style
-		w = waitpid(-1, 0, 0);				// can change the second param to a int pointer, status
+		w = waitpid(-1, &status, 0);		// can change the second param to 0 ; can change first param to pid for precision
 		// w is the pid of the child that acted out
+		ft_printf("status : %d\n", status);
 		kill(pid, SIGKILL);
 		// parent();						// nothing happens in parent so far, put waitpid and all this things inside parent when tests are over
 		ft_printf("Parent out\n");

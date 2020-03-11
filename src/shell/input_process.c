@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_process.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
+/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 17:12:00 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/11 13:24:29 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 16:17:35 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,16 @@ int		input_parser(t_input *input)
 			while (input->content[i] && input->content[i] != quote_type)
 				i++;
 		}
-		if (str[i] == ';' && i > 0 && str[i - 1] != '\\')
+		if (input->content[i] == ';' && i > 0 && input->content[i - 1] != '\\')
 		{
-			cmd_init(input, &str[j], i - j);
+			cmd_init(input, &input->content[j], i - j);
 			j = i + 1;
 		}
 		i++;
 	}
-	cmd_init(input, &str[j], i - j);
+	cmd_init(input, &input->content[j], i - j);
+	//TODO Definier une return value, j'en ai mis une pour pouvoir compiler
+	return (SUCCESS);
 }
 
 t_bool	is_quote_opened(char *str, char sep)

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+         #
+#    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:46:56 by jotrique          #+#    #+#              #
-#    Updated: 2020/03/11 13:30:14 by mbos             ###   ########lyon.fr    #
+#    Updated: 2020/03/11 15:39:52 by jotrique         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,7 +81,7 @@ INC_I			=	$(addprefix -I,$(INC_PATH))
 # OBJ				=	$(SRC:.c=.o)
 OBJ_PATH		=	.objects
 OBJ_NAME		:=	${SRC_NAME:.c=.o}
-OBJ 			= $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
+OBJ 			=	$(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 
 
 ##					##
@@ -137,7 +137,12 @@ exec			:
 					./a.out
 
 # make PARAM=input_init ut
-ut $(PARAM)		:
+ut $(p)		:
+					$(CC) $(CFLAGS) -g3 $(OBJ) $(INC_I) src/tests/ut_$(p).c libft/libft.a
+					./a.out
+
+# make ut + asan
+uta $(PARAM)		:
 					$(CC) $(CFLAGS) $(ASAN) $(OBJ) $(INC_I) src/tests/ut_$(PARAM).c libft/libft.a
 					./a.out
 

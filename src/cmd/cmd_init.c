@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
+/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 14:54:49 by mbos              #+#    #+#             */
-/*   Updated: 2020/03/11 13:29:40 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 16:18:33 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,29 +29,33 @@ void	cmd_clear(t_cmd **head)
 	head = 0;
 }
 
-void	cmd_add(t_cmd **head_cmd, t_cmd *new)
+// on avait copié cmd_add sur input_add, sauf que l'on avait un **head_input,
+// mais pas de **head_cmd, donc ca couillait
+// je l'ai passé en pointeur simple et maintenant ca marche ^^
+void	cmd_add(t_cmd *head_cmd, t_cmd *new)
 {
 	t_cmd *tmp;
 
 	if (!head_cmd)
-		head_cmd = &new;
+		head_cmd = new;
 	else
 	{
-		tmp = *head_cmd;
+		tmp = head_cmd;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
 	}
 }
 
-int		cmd_init(t_input *input, char *content, size_t len)
+int		cmd_init(t_input *input, char *content, int len)
 {
 	t_cmd *new;
 
 	if (!(new = malloc(sizeof(t_cmd))))
 		return (return_function(__func__, "FAIL malloc"));
 	new->content = ft_strndup(content, len);
-	cmd_add(&input->cmd, new);
+	// a test if you need one : ft_printf("\nStatus at cmd_init start\n\n*input-content %s\ncontent %s\nlen %d\n", input->content, content, len);
+	cmd_add(input->cmd, new);
 	cmd_parser(new);
 	return (SUCCESS);
 }

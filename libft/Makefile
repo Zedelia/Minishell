@@ -6,7 +6,7 @@
 #    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/11 11:01:57 by abourbou          #+#    #+#              #
-#    Updated: 2020/03/09 17:10:56 by jotrique         ###   ########lyon.fr    #
+#    Updated: 2020/03/11 14:14:37 by jotrique         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,9 +62,8 @@ OBJ			= 	$(SRC:.c=.o)
 
 all 		:	$(OBJ) $(NAME)
 
-$(NAME) 	:	$(OBJ) $(INCLUDE)
-				ar r $(NAME) $(OBJ)
-				ranlib $(NAME)
+$(NAME) 	:	$(OBJ)
+				ar rs $(NAME) $(OBJ)
 
 %.o 		:	%.c $(INCLUDE)
 				$(CC) -c -o $@ $< $(CFLAGS)
