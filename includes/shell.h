@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
+/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 10:22:45 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/10 11:47:32 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 12:15:09 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # include "minishell.h"
 
 //signal.c
-void	sigint(int signum);
-void	sigterm(int signum);
-void	sigquit(int signum);
+void	sig_int(int signum);
+void	sig_term(int signum);
+void	sig_quit(int signum);
 
 //parent.c
-void	parent(int *status);
+void	parent(void);
 
 //child.c
 int		child(t_input **head);

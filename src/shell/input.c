@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
+/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:06:38 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/10 11:48:27 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 12:36:00 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ void	input_add(t_input **head_input, t_input *new)
 
 int		input_init(t_input **head_input, char *user_input)
 {
-	t_input *new;
+	t_input	*new;
+	int		cmd_status;
 
 	if (!(new = wrmalloc(sizeof(t_input))))
 		return (return_function(__func__, "FAIL malloc"));
@@ -54,9 +55,9 @@ int		input_init(t_input **head_input, char *user_input)
 	wrfree(user_input);
 	input_add(head_input, new);
 	input_join(&new);
-	child(head_input);
-
-	// return (cmd_init(new));
-
-	return (1);
+	if (cmd_status == UNDEFINED)
+		child(head_input);
+	if (cmd_status == FAILURE)
+		exit(FAILURE);
+	return (SUCCESS);
 }
