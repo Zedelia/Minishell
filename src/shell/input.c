@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:06:38 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/11 12:36:00 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 13:30:34 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	input_add(t_input **head_input, t_input *new)
 {
 	t_input *tmp;
 
-	if (head_input == 0)
+	if (!head_input)
 		head_input = &new;
 	else
 	{
@@ -46,7 +46,7 @@ void	input_add(t_input **head_input, t_input *new)
 int		input_init(t_input **head_input, char *user_input)
 {
 	t_input	*new;
-	int		cmd_status;
+	// int		cmd_status;
 
 	if (!(new = wrmalloc(sizeof(t_input))))
 		return (return_function(__func__, "FAIL malloc"));
@@ -55,9 +55,9 @@ int		input_init(t_input **head_input, char *user_input)
 	wrfree(user_input);
 	input_add(head_input, new);
 	input_join(&new);
-	if (cmd_status == UNDEFINED)
-		child(head_input);
-	if (cmd_status == FAILURE)
-		exit(FAILURE);
+	// if (cmd_status == UNDEFINED)
+	// 	child(head_input);
+	// if (cmd_status == FAILURE)
+	// 	exit(FAILURE);
 	return (SUCCESS);
 }

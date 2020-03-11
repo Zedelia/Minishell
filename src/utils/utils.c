@@ -1,22 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cmd.h                                              :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/09 14:56:07 by mbos              #+#    #+#             */
-/*   Updated: 2020/03/11 13:31:09 by mbos             ###   ########lyon.fr   */
+/*   Created: 2020/03/11 12:45:40 by mbos              #+#    #+#             */
+/*   Updated: 2020/03/11 13:11:31 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CMD_H
-# define CMD_H
+#include "minishell.h"
 
-# include "minishell.h"
-
-int		cmd_init(t_input *input, char *content, size_t len);
-void	cmd_clear(t_cmd **head);
-
-
-#endif

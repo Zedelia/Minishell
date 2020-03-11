@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
+#    By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/30 11:46:56 by jotrique          #+#    #+#              #
-#    Updated: 2020/03/09 17:33:42 by jotrique         ###   ########lyon.fr    #
+#    Updated: 2020/03/11 13:30:14 by mbos             ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,16 +46,19 @@ LIBFT_PATH		=	libft
 SRC_NAME		=	exec/echo.c \
 					exec/pwd.c \
 					cmd/cmd_init.c \
+					cmd/cmd_process.c \
 					signal/signal.c \
 					shell/child.c \
 					shell/input.c \
 					shell/input_process.c \
 					shell/parent.c \
-					shell/return.c
+					shell/return.c \
+					utils/utils.c \
+
 
 					# add src/*.c - main.c manually
 
-MKDIR_LST		=	{cmd,exec,signal,shell}
+MKDIR_LST		=	{cmd,exec,signal,shell,utils}
 
 SRC_PATH		= 	src
 

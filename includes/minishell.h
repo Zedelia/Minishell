@@ -6,7 +6,7 @@
 /*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 10:27:27 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 15:11:13 by mbos             ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 12:46:10 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,5 +99,7 @@ struct s_args
 # include "cmd.h"
 # include "shell.h"
 # include "exec.h"
+
+t_bool	is_quote_opened(char *str, char sep);
 
 #endif

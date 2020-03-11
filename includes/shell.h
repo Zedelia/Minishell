@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shell.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
+/*   By: mbos <mbos@student.le-101.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 10:22:45 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/11 12:15:09 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 13:13:51 by mbos             ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	parent(void);
 int		child(t_input **head);
 
 //input_process.c
-int		input_parser(t_input *input);
+int		input_quote_check(t_input *input);
 int		input_join(t_input **input);
 
 //input.c
