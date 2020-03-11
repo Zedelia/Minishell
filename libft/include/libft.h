@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/10 10:24:53 by abourbou          #+#    #+#             */
-/*   Updated: 2020/03/09 17:09:58 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 18:18:36 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void			ft_putendl_fd(char *s, int fd);
 void			ft_putnbr_fd(int n, int fd);
 int				is_in(char c, char *str);
 void			ft_memdel(void **ap);
-int				backtrack_ws(char c, char *str);
+char			backtrack(char *str);
 
 /*
 **	LIST TOOLS

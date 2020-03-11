@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 12:06:38 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/11 16:16:10 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 18:41:44 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,12 +54,12 @@ int		input_init(t_input **head_input, char *user_input)
 	new->content = ft_strdup(user_input);
 	wrfree(user_input);
 	input_add(head_input, new);
-	if (input_join(&new))
+	if (input_join(&new) == SUCCESS)
 		input_parser(new);
-	ft_printf("\nafter input parser (VICTORY)\n\n");
 	// if (cmd_status == UNDEFINED)
-	// 	child(head_input);
+		child(head_input);
 	// if (cmd_status == FAILURE)
 	// 	exit(FAILURE);
+	ft_printf("\nafter input parser (VICTORY)\n\n");
 	return (SUCCESS);
 }

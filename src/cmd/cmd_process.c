@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/11 13:30:29 by mbos              #+#    #+#             */
-/*   Updated: 2020/03/11 16:19:58 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 18:48:53 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,6 @@ Else split arg 2 et + et go operations
 
 Verif si fini par pipe -> redirection stdout de la cmd
 */
-
-//* Melo, j'ai essayé de commenter au mieux, tu me diras ce en quoi c'etait perfectible ok ? :)
-//? Rappelle toi que l'on est allié, et que l'on est bienveillant l'un envers l'autre,
-//? et surtout envers soi-meme ! Ne te met pas la pression :)
-// On a actuellement un soucis avec cmd_init, camd_add interrompt le programme
-// je t'invite a aller voir ca
 
 int		cmd_parser(t_cmd *cmd)
 {

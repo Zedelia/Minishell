@@ -1,23 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   backtrack_ws.c                             :+:      :+:    :+:   */
+/*   backtrack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/03/09 16:39:02 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/09 16:52:20 by jotrique         ###   ########lyon.fr   */
+/*   Created: 2020/03/11 18:07:17 by jotrique          #+#    #+#             */
+/*   Updated: 2020/03/11 19:15:07 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft.h"
 
-int	backtrack_ws(char c, char *str)
+char	backtrack(char *str)
 {
 	int len;
 
 	len = ft_strlen(str) - 1;
-	while (len > 0 && is_in(str[len], " \t\n\r\v\f"))
+	if (len == -1)
+		return (str[0]);
+	while (len > 0 && str[len] == ' ')
 		len--;
-	return (str[len] == c ? 1 : 0);
+	return (str[len]);
 }

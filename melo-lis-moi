@@ -1,0 +1,32 @@
+Coucou Melo
+
+Tout d'abord :
+Rappelle toi que l'on est allié,
+que l'on est bienveillantl'un envers l'autre,
+et surtout envers soi-meme !
+Ne te met pas la pression :)
+
+Aussi, j'ai essayé de commenter au mieux,
+tu me diras ce en quoi c'etait perfectible ok ? :)
+
+Le reste devrait mieux marcher et de maniere plus propre
+qu'avant ^^
+
+Notamment, maintenant quand on a un soucis dans un enfant,
+le parent nous renvoie son status (le fameux)
+qui nous permet de traquer un peu l'erreur.
+Un status 11 est une exception ou un truc a gerer dans l'enfant !
+
+Ctrl C et Ctrl \ permettent de quitter le programme
+Ctrl D . . . copie l'entete de ligne ??
+C'est de la magie noire, donc j'accuse la Wican ! ;)
+
+J'ai changé le comportement de la fonction backtrack
+Et son nom (avant c'etait backtrack_ws)
+Maintenant ca renvoie le premier char qui n'est pas un espace
+en parant de la fin
+
+Aussi, si tu fais un make exec des maintenant, tu verras que l'on parse
+correctement notre premier element \o/
+(sauf s'il est entre quotes -_- mais fuckit ca viendra)
+

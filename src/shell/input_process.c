@@ -6,7 +6,7 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 17:12:00 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/11 16:17:35 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 19:15:46 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,30 +40,26 @@ int		input_parser(t_input *input)
 	return (SUCCESS);
 }
 
-t_bool	is_quote_opened(char *str, char sep)
-{
-	int i;
-
-	i = 1;
-	while (str[i] && str[i] != sep)
-		i++;
-	if (!str[i])
-		return (True);
-	return (False);
-}
-
+// j'ai refusionner input_quote_check et quote_opened, ils ne marchaient pas separement
 int		input_quote_check(t_input *input)
 {
 	char *str;
 	int i;
 	int j;
+	char quote_type;
 
 	i = -1;
 	j = 0;
 	str = input->content;
 	while(str[++i])
 	{
-		if (is_in(str[i], "\'\"") && is_quote_opened(str + i, str[i]) == True)
+		if (is_in(input->content[i], "\'\""))
+		{
+			quote_type = input->content[i++];
+			while (input->content[i] && input->content[i] != quote_type)
+				i++;
+		}
+		if (!str[i])
 			return (return_function(__func__, "Quote still opened\n"));
 	}
 	return (SUCCESS);
@@ -75,7 +71,7 @@ int		input_join(t_input **input)
 	char *cp;
 
 	input_quote_check(*input);
-	if (backtrack_ws('|', (*input)->content) == False)
+	if (backtrack((*input)->content) != '|')
 		return (SUCCESS);
 	ft_printf("> ");
 	get_next_line(0, &user_input);

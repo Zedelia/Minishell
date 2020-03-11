@@ -6,29 +6,28 @@
 /*   By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/09 10:20:53 by jotrique          #+#    #+#             */
-/*   Updated: 2020/03/11 12:14:48 by jotrique         ###   ########lyon.fr   */
+/*   Updated: 2020/03/11 18:45:14 by jotrique         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
+//TODO handle "clear current process + start a new"
 void sig_int(int signum)
 {
 	printf("\n%s ~ Signal %d caught, coming out...", __func__, signum);
-	//TODO handle "clear current process + start a new"
+	exit(signum);
 }
 
-//TODO (aka doesn't work at all)
+//TODO (aka doesn't work at all, currently copy the shell without \n)
 void sig_term(int signum)
 {
 	printf("\n%s ~ Signal %d caught, coming out...", __func__, signum);
-	if (signum == 2)
-		exit(0);
+	exit(signum);
 }
 
 void sig_quit(int signum)
 {
 	printf("\n%s ~ Signal %d caught, coming out...", __func__, signum);
-	(void)signum;
 	exit(0);
 }

@@ -6,7 +6,7 @@
 #    By: jotrique <jotrique@student.le-101.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/11 11:01:57 by abourbou          #+#    #+#              #
-#    Updated: 2020/03/11 14:14:37 by jotrique         ###   ########lyon.fr    #
+#    Updated: 2020/03/11 18:15:44 by jotrique         ###   ########lyon.fr    #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRC_LIBFT	= 	ft_atoi.c  ft_strdup.c ft_bzero.c \
 				ft_lstclear_bonus.c ft_lstdelone_bonus.c ft_lstiter_bonus.c \
 				ft_lstlast_bonus.c ft_lst_addnew.c \
 				is_in.c ft_usefull_free.c wrm.c ft_memdel.c \
-				backtrack_whitespace.c
+				backtrack.c
 
 GNL_PATH	=	get_next_line
 SRC_GNL		=	get_next_line.c get_next_line_utils.c
